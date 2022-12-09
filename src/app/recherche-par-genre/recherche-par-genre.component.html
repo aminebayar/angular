@@ -1,0 +1,36 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4"> 
+        <label>Genres </label> 
+        <select class="form-control form-control-lg"   id="idGenre" name="idGenre"
+         [(ngModel)]="IdGenre" (change)="onChange()">
+          <option *ngFor="let genre of genres" value="{{genre.idGenre}}">
+               {{genre.nomGenre}} 
+         </option>
+    </select> 
+   </div>
+
+
+   
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> <th>Id</th><th>Nom</th> <th>Saison</th>  <th>Date Création</th><th>Genre</th> </tr>
+                </thead>
+                <tbody *ngFor="let TvShow of tvshows">
+                    <tr>
+                        <td>{{TvShow.idTvShow}}</td>
+                        <td>{{TvShow.nomTvShow}}</td>
+                        <td>{{TvShow.saisonTvShow}}</td>
+                        <td>{{TvShow.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{TvShow.genre?.nomGenre}}</td> 
+                       <!--  <td><a class="btn btn-danger" (click)="supprimerTvShow(TvShow)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateTvShow',TvShow.idTvShow]">Modifier</a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
